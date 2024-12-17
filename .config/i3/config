@@ -37,10 +37,10 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -114,8 +114,17 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# albert
-bindsym $mod+space exec --no-startup-id albert show
+# Application launcher
+#bindsym $mod+space exec --no-startup-id albert show
+bindsym $mod+space exec --no-startup-id rofi -show drun
+
+# Extra keys
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
+bindsym XF86AudioMute exec --no-startup-id pamixer -t
+bindsym XF86AudioMicMute exec --no-startup-id pamixer --default-source -t
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -153,6 +162,12 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+
+workspace 1 output primary
+workspace 2 output primary
+workspace 3 output primary
+workspace 4 output primary
+workspace_layout default
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -194,3 +209,34 @@ bindsym $mod+r mode "resize"
 #         status_command i3status
 # }
 exec --no-startup-id $HOME/.config/polybar/launch.sh
+
+#################
+# GRUVBOX-THEME #
+#################
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+set $lightgray #bdae93
+set $orange #fe8019
+
+# class                 border|backgr|text|indicator|child_border
+client.focused          $orange $orange $bg $aqua $orange
+client.focused_inactive $darkgray $darkgray $lightgray $aqua $darkgray
+client.unfocused        $darkgray $darkgray $lightgray $aqua $darkgray
+client.urgent           $red $red $white $red $red
+
+for_window [class="^.*"] border pixel 3
+default_border pixel 3
+gaps inner 5
+
+# wallpaper
+exec --no-startup-id $HOME/.fehbg &
+
+# polkit (sudo gui popup)
+exec --no-startup-id /usr/libexec/polkit-mate-authentication-agent-1 &
