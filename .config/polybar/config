@@ -25,6 +25,22 @@ secondary = #d65d0e
 alert = #cc241d
 disabled = #707880
 
+blue = #83a598
+cyan = #8ec07c
+green = #b8bb26
+orange = #fe8019
+purple = #d3869b
+red = #fb4934
+yellow = #fabd2f
+
+bg-blue = #458588
+bg-cyan = #689d6a
+bg-green = #98971a
+bg-orange = #d65d0e
+bg-purple = #b16268
+bg-red = #cc241d
+bg-yellow = #d79921
+
 [bar/example]
 width = 100%
 height = 24pt
@@ -46,12 +62,18 @@ padding-right = 1
 module-margin = 1
 
 separator = |
+separator-font = 4
 separator-foreground = ${colors.disabled}
 
-font-0 = monospace;2
+#font-0 = monospace;2
+font-0 = "ComicShannsMono Nerd Font:pixelsize=13;4"
+font-1 = "ComicShannsMono Nerd Font:pixelsize=18;3"
+font-2 = "ComicShannsMono Nerd Font:pixelsize=10;3"
+font-3 = "ComicShannsMono Nerd Font:pixelsize=18;4"
+font-4 = "ComicShannsMono Nerd Font:pixelsize=15;3"
 
-modules-left = i3 xworkspaces xwindow
-modules-right = filesystem pulseaudio xkeyboard memory cpu wlan eth date
+modules-left = i3 xwindow
+modules-right = pulseaudio memory cpu bat1 bat2 systray date power
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -68,30 +90,25 @@ enable-ipc = true
 type = internal/i3
 pin-workspaces = true
 
-
 label-focused = %name%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 1
 
-label-separator = " "
-
-label-occupied = %name%
-label-occupied-padding = 1
+label-unfocused = %name%
+label-unfocused-padding = 1
 
 label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
 
-label-empty = %name%
-label-empty-foreground = ${colors.disabled}
-label-empty-padding = 1
 
 [module/systray]
 type = internal/tray
 
 format-margin = 8pt
-tray-spacing = 16pt
+tray-spacing = 10pt
+tray-size = 50%
 
 [module/xworkspaces]
 type = internal/xworkspaces
@@ -114,7 +131,7 @@ label-empty-padding = 1
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:60:...%
+label = %title:0:40:...%
 
 [module/filesystem]
 type = internal/fs
@@ -130,14 +147,24 @@ label-unmounted-foreground = ${colors.disabled}
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume-prefix = "VOL "
-format-volume-prefix-foreground = ${colors.primary}
+format-volume-prefix = "VOL"
+format-volume-prefix-foreground = ${colors.foreground}
+format-volume-prefix-background = ${colors.bg-red}
+format-volume-prefix-padding = 1
 format-volume = <label-volume>
 
-label-volume = %percentage%%
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-foreground = ${colors.foreground}
+ramp-volume-background = ${colors.bg-red}
+ramp-volume-padding = 2
+ramp-volume-font = 2
 
-label-muted = muted
-label-muted-foreground = ${colors.disabled}
+label-volume = " %percentage%%"
+label-muted = " OFF"
+
+click-right = "pavucontrol"
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -154,33 +181,51 @@ label-indicator-background = ${colors.secondary}
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "RAM "
-format-prefix-foreground = ${colors.primary}
-label = %percentage_used:2%%
+format-prefix = "MEM"
+format-prefix-background = ${colors.bg-yellow}
+format-prefix-padding = 1
+format-prefix-font = 1
+label = " %percentage_used:2%%"
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "CPU "
-format-prefix-foreground = ${colors.primary}
-label = %percentage:2%%
+format-prefix = "CPU"
+format-prefix-background = ${colors.bg-green}
+format-prefix-padding = 1
+format-prefix-font = 1
+label = " %percentage:2%%"
 
 [network-base]
 type = internal/network
 interval = 5
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
-label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
+label-disconnected = "​"
+label-connected-font = 3
+label-disconnected-font = 3
 
 [module/wlan]
 inherit = network-base
 interface-type = wireless
-label-connected = %{F#F0C674}%ifname%%{F-} %essid% %local_ip%
+format-connected-prefix = "WLP"
+format-connected-prefix-background = ${colors.bg-cyan}
+format-connected-prefix-padding = 1
+#format-disconnected-prefix = "WLP"
+#format-disconnected-prefix-background = ${colors.bg-cyan}
+#format-disconnected-prefix-padding = 1
+label-connected = " %local_ip%"
 
 [module/eth]
 inherit = network-base
 interface-type = wired
-label-connected = %{F#F0C674}%ifname%%{F-} %local_ip%
+format-connected-prefix = "ETH"
+format-connected-prefix-background = ${colors.bg-blue}
+format-connected-prefix-padding = 1
+format-disconnected-prefix = "ETH"
+format-disconnected-prefix-background = ${colors.bg-blue}
+format-disconnected-prefix-padding = 1
+label-connected = " %local_ip%"
 
 [module/date]
 type = internal/date
@@ -190,7 +235,54 @@ date = %H:%M
 date-alt = %Y-%m-%d %H:%M:%S
 
 label = %date%
+label-background = ${colors.bg-blue}
+label-padding = 1
+label-font = 1
+
+[battery]
+type = internal/battery
+
+
+; This is useful in case the battery never reports 100% charge
+; Default: 100
+full-at = 100
+
+; format-low once this charge percentage is reached
+; Default: 10
+; New in version 3.6.0
+low-at = 5
+
+adapter = AC
+
+[module/bat1]
+inherit = battery
+battery = BAT0
+format-charging-prefix = "BAT"
+format-charging-prefix-background = ${colors.bg-cyan}
+format-charging-prefix-padding = 1
+format-discharging-prefix = "BAT"
+format-discharging-prefix-background = ${colors.bg-cyan}
+format-discharging-prefix-padding = 1
+format-full-prefix = "BAT"
+format-full-prefix-background = ${colors.bg-cyan}
+format-full-prefix-padding = 1
+label-charging = " %{F#FED21B}%percentage%%%{F-}"
+label-low = " %{F#FF0000}%percentage%%%{F-}"
+label-full = " %{F#b8bb26}%percentage%%%{F-}"
+
+[module/bat2]
+inherit = battery
+battery = BAT1
+label-charging = "%{F#FED21B}%percentage%%%{F-}"
+label-low = "%{F#FF0000}%percentage%%%{F-}"
+label-full = "%{F#b8bb26}%percentage%%%{F-}"
+
+[module/power]
+type = custom/text
+label = "⏻"
+label-font = 5
 label-foreground = ${colors.primary}
+click-left = "rofi -show powermenu -modi powermenu:.local/bin/rofi-power-menu -location 3 -theme-str 'configuration { show-icons: false; }' -lines 3"
 
 [settings]
 screenchange-reload = true
