@@ -38,6 +38,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# Alt-Tab, do sudo apt install alttab
+exec --no-startup-id alttab -sc 1 -d 1
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -47,6 +50,8 @@ set $refresh_i3status killall -SIGUSR1 i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+#bindsym $mod+Tab exec i3-cycle next
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
