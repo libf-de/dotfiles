@@ -16,13 +16,13 @@ while pgrep -u $(id -u) -x polybar > /dev/null; do sleep 1; done
 desktop=$(echo $DESKTOP_SESSION)
 count=$(xrandr --query | grep " connected" | cut -d" " -f1 | wc -l)
 
-if type "xrandr" > /dev/null; then
-    for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MONITOR=$m polybar --reload -c ~/.config/polybar/config &
-    done
-else
+#if type "xrandr" > /dev/null; then
+#    for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+#    MONITOR=$m polybar --reload -c ~/.config/polybar/config &
+#    done
+#else
 polybar --reload -c ~/.config/polybar/config &
-fi
+#fi
 # second polybar at bottom
 # if type "xrandr" > /dev/null; then
 #   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
