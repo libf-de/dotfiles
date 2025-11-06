@@ -1,0 +1,5 @@
+#date: '+%a, %d %b %y  %H:%M'
+date: classic
+color:
+  when: auto
+  theme: custom

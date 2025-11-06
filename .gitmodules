@@ -1,3 +1,63 @@
-[submodule ".local/share/i3-battery-popup"]
-	path = .local/share/i3-battery-popup
-	url = https://github.com/rjekker/i3-battery-popup/
+[submodule ".local/share/nvim/site/pack/packer/start/LuaSnip"]
+	path = .local/share/nvim/site/pack/packer/start/LuaSnip
+	url = https://github.com/L3MON4D3/LuaSnip.git
+[submodule ".local/share/nvim/site/pack/packer/start/cmp-buffer"]
+	path = .local/share/nvim/site/pack/packer/start/cmp-buffer
+	url = https://github.com/hrsh7th/cmp-buffer.git
+[submodule ".local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"]
+	path = .local/share/nvim/site/pack/packer/start/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
+[submodule ".local/share/nvim/site/pack/packer/start/cmp-nvim-lua"]
+	path = .local/share/nvim/site/pack/packer/start/cmp-nvim-lua
+	url = https://github.com/hrsh7th/cmp-nvim-lua.git
+[submodule ".local/share/nvim/site/pack/packer/start/cmp-path"]
+	path = .local/share/nvim/site/pack/packer/start/cmp-path
+	url = https://github.com/hrsh7th/cmp-path.git
+[submodule ".local/share/nvim/site/pack/packer/start/cmp_luasnip"]
+	path = .local/share/nvim/site/pack/packer/start/cmp_luasnip
+	url = https://github.com/saadparwaiz1/cmp_luasnip.git
+[submodule ".local/share/nvim/site/pack/packer/start/dracula"]
+	path = .local/share/nvim/site/pack/packer/start/dracula
+	url = https://github.com/dracula/vim.git
+[submodule ".local/share/nvim/site/pack/packer/start/friendly-snippets"]
+	path = .local/share/nvim/site/pack/packer/start/friendly-snippets
+	url = https://github.com/rafamadriz/friendly-snippets.git
+[submodule "linux-configs/^^"]
+	path = linux-configs/^^
+	url = https://github.com/ellisonleao/gruvbox.nvim.git
+[submodule ".local/share/nvim/site/pack/packer/start/gruvbox.nvim"]
+	path = .local/share/nvim/site/pack/packer/start/gruvbox.nvim
+	url = https://github.com/ellisonleao/gruvbox.nvim.git
+[submodule ".local/share/nvim/site/pack/packer/start/lsp-zero.nvim"]
+	path = .local/share/nvim/site/pack/packer/start/lsp-zero.nvim
+	url = https://github.com/VonHeikemen/lsp-zero.nvim.git
+[submodule ".local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim"]
+	path = .local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim
+	url = https://github.com/williamboman/mason-lspconfig.nvim.git
+[submodule ".local/share/nvim/site/pack/packer/start/mason.nvim"]
+	path = .local/share/nvim/site/pack/packer/start/mason.nvim
+	url = https://github.com/williamboman/mason.nvim.git
+[submodule ".local/share/nvim/site/pack/packer/start/nvim-cmp"]
+	path = .local/share/nvim/site/pack/packer/start/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp.git
+[submodule ".local/share/nvim/site/pack/packer/start/nvim-lspconfig"]
+	path = .local/share/nvim/site/pack/packer/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule ".local/share/nvim/site/pack/packer/start/nvim-tree.lua"]
+	path = .local/share/nvim/site/pack/packer/start/nvim-tree.lua
+	url = https://github.com/nvim-tree/nvim-tree.lua.git
+[submodule ".local/share/nvim/site/pack/packer/start/nvim-treesitter"]
+	path = .local/share/nvim/site/pack/packer/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule ".local/share/nvim/site/pack/packer/start/nvim-web-devicons"]
+	path = .local/share/nvim/site/pack/packer/start/nvim-web-devicons
+	url = https://github.com/nvim-tree/nvim-web-devicons.git
+[submodule ".local/share/nvim/site/pack/packer/start/packer.nvim"]
+	path = .local/share/nvim/site/pack/packer/start/packer.nvim
+	url = https://github.com/wbthomason/packer.nvim
+[submodule ".oh-my-zsh"]
+	path = .oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule ".oh-my-zsh-custom/plugins/zsh-autosuggestions"]
+	path = .oh-my-zsh-custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
