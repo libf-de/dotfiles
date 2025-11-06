@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-#eval "$(zoxide init --cmd cd zsh)"
+type zoxide >/dev/null 2>&1 && eval "$(zoxide init --cmd cd zsh)"
 
 type lsd >/dev/null 2>&1 && alias ls='lsd' && alias ll='lsd -lah' && compdef lsd=ls
 
