@@ -105,7 +105,7 @@ source $ZSH/oh-my-zsh.sh
 
 #eval "$(zoxide init --cmd cd zsh)"
 
-type lsd >/dev/null 2>&1 && alias ls='lsd' && alias ll='lsd -lah'
+type lsd >/dev/null 2>&1 && alias ls='lsd' && alias ll='lsd -lah' && compdef lsd=ls
 
 # Overlay configuration
 [ -f $HOME/.zshrc-overlay ] && source $HOME/.zshrc-overlay
