@@ -3,3 +3,4 @@
 \.gitignore
 \.gitmodules
 install-.*
+zshrc-overlay-template

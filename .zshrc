@@ -110,3 +110,8 @@ source $ZSH/oh-my-zsh.sh
 type zoxide >/dev/null 2>&1 && eval "$(zoxide init --cmd cd zsh)"
 
 type lsd >/dev/null 2>&1 && alias ls='lsd' && compdef lsd=ls
+
+# Execute post-initialization hook if defined
+if typeset -f post_omz_init >/dev/null; then
+    post_omz_init
+fi

@@ -1,0 +1,14 @@
+# Color of agnostermod prompt
+export CMDFG="cyan"
+
+# Change path variable
+# export PATH=$HOME/.bin:$PATH
+
+# Add more plugins
+# plugins+=(ubuntu command-not-found docker-compose)
+
+# Hook to be run after OMZ is loaded, e.g. for more completions
+#post_omz_init() {
+# # Load Angular CLI autocompletion.
+#  source <(ng completion script)
+#}
